@@ -6,7 +6,7 @@ const app = express();
 
 const controllerFile = require("./controller");
 
-// app.use(express.static("client"));
+app.use(express.static("client"));
 app.use(express.json());
 app.use(cors());
 
