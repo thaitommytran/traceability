@@ -15,6 +15,16 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/index.html"));
 });
 
+app.get("/", (req, res) => {
+  try {
+    nonExistentFunction();
+  } catch (error) {
+    console.error(error);
+    // expected output: ReferenceError: nonExistentFunction is not defined
+    // Note - error messages will vary depending on browser
+  }
+});
+
 app.get("/api/movies", controllerFile.getMovies);
 app.delete("/api/movies/:id", controllerFile.deleteMovie);
 app.post("/api/movies", controllerFile.createMovies);
